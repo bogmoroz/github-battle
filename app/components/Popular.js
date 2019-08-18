@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { fetchPopularRepos } from '../utils/api';
 
 function LanguagesNav({ selected, onUpdateLanguage }) {
   const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
@@ -31,7 +32,9 @@ export default class Popular extends React.Component {
     super(props);
 
     this.state = {
-      selectedLanguage: 'All'
+      selectedLanguage: 'All',
+      repos: null,
+      error: null
     };
 
     this.updateLanguage = this.updateLanguage.bind(this);
@@ -39,8 +42,24 @@ export default class Popular extends React.Component {
 
   updateLanguage(selectedLanguage) {
     this.setState({
-      selectedLanguage
+      selectedLanguage,
+      error: null,
+      repos: null
     });
+
+    fetchPopularRepos(selectedLanguage)
+      .then(repos =>
+        this.setState({
+          repos,
+          error: null
+        })
+      )
+      .catch(() => {
+        console.warn('Error fetching repos: ', error);
+        this.setState({
+          error: 'There was an error fetching the repositories'
+        });
+      });
   }
 
   render() {
