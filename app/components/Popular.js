@@ -85,7 +85,9 @@ export default class Popular extends React.Component {
         />
         {this.isLoading() && <p>LOADING</p>}
         {error && <p>{error}</p>}
-        {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
+        {repos[selectedLanguage] && (
+          <pre>{JSON.stringify(repos[selectedLanguage], null, 2)}</pre>
+        )}
       </>
     );
   }
