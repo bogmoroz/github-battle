@@ -23,8 +23,47 @@ function LanguagesNav({ selected, onUpdateLanguage }) {
 }
 
 LanguagesNav.propTypes = {
-  selected: PropTypes.bool.isRequired,
+  selected: PropTypes.string.isRequired,
   onUpdateLanguage: PropTypes.func.isRequired
+};
+
+function ReposGrid({ repos }) {
+  return (
+    <ul className='grid space-around'>
+      {/*  <pre>{JSON.stringify(repos, null, 2)}</pre> */}
+      {repos.map((repo, index) => {
+        const {
+          name,
+          owner,
+          html_url,
+          stargazers_count,
+          forks,
+          open_issues
+        } = repo;
+        const { login, avatar_url } = owner;
+
+        return (
+          <li key={html_url} className='repo bg-light'>
+            <h4 className='header-lg center-text'>#{index + 1}</h4>
+            <img
+              className='avatar'
+              src={avatar_url}
+              alt={`Avatar for ${login}`}
+            />
+            <h2 className='center-text'>
+              <a className='link' href={html_url}>
+                {login}
+              </a>
+            </h2>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+ReposGrid.propTypes = {
+  repos: PropTypes.array.isRequired
 };
 
 export default class Popular extends React.Component {
@@ -86,7 +125,7 @@ export default class Popular extends React.Component {
         {this.isLoading() && <p>LOADING</p>}
         {error && <p>{error}</p>}
         {repos[selectedLanguage] && (
-          <pre>{JSON.stringify(repos[selectedLanguage], null, 2)}</pre>
+          <ReposGrid repos={repos[selectedLanguage]} />
         )}
       </>
     );
