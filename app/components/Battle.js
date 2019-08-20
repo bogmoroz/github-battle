@@ -30,6 +30,7 @@ function Instructions() {
 class PlayerInput extends React.Component {
   constructor() {
     super(props);
+
     this.state = {
       username: ''
     };
@@ -39,10 +40,27 @@ class PlayerInput extends React.Component {
 
   handleSubmit() {
     event.preventDefault();
+
+    this.props.onSubmit();
   }
 
   render() {
-    return <form className='column player' onSubmit={this.handleSubmit} />;
+    return (
+      <form className='column player' onSubmit={this.handleSubmit}>
+        <label htmlFor='username' className='player label'>
+          {this.props.label}
+        </label>
+        <div className='row player-inputs'>
+          <input
+            type='text'
+            id='username'
+            className='input-light'
+            placeholder='github username'
+            autoComplete='off'
+          />
+        </div>
+      </form>
+    );
   }
 }
 export default class Battle extends React.Component {
@@ -50,6 +68,7 @@ export default class Battle extends React.Component {
     return (
       <>
         <Instructions />
+        {/*  <PlayerInput onSubmit={} /> */}
       </>
     );
   }
