@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUserFriends, FaFighterJet, FaTrophy } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 function Instructions() {
   return (
@@ -28,7 +29,7 @@ function Instructions() {
 }
 
 class PlayerInput extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -90,7 +91,7 @@ export default class Battle extends React.Component {
     return (
       <>
         <Instructions />
-        <PlayerInput onSubmit={value => console.log(value)} />
+        <PlayerInput label='Label' onSubmit={value => console.log(value)} />
       </>
     );
   }
