@@ -109,7 +109,7 @@ export default class Battle extends React.Component {
       <>
         <Instructions />
         {/* <PlayerInput label='Label' onSubmit={value => console.log(value)} /> */}
-        <div className='player-container'>
+        <div className='players-container'>
           <h1 className='center-text header-lg'>Players</h1>
           <div className='row space-around'>
             {playerOne === null && (
