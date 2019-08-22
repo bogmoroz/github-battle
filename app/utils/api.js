@@ -52,6 +52,16 @@ function getUserData(player) {
   );
 }
 
+function sortPlayers(players) {
+  return players.sort((a, b) => b.score - a.score);
+}
+
+export function battle(players) {
+  Promise.all([getUserData(players[0]), getUserData(players[1])]).then(
+    results => sortPlayers(results)
+  );
+}
+
 export function fetchPopularRepos(language) {
   const endpoint = window.encodeURI(
     `https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`
