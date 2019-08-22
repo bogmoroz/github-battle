@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Card({ header, subheader, avatar, href, name }) {
   return (
@@ -18,3 +19,11 @@ export default function Card({ header, subheader, avatar, href, name }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  header: PropTypes.string.isRequired,
+  subheader: PropTypes.string,
+  avatar: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+};
