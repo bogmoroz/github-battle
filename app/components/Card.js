@@ -7,7 +7,7 @@ export default function Card({ header, subheader, avatar, href, name }) {
       <h4 className='header-lg center-text'>{header}</h4>
       <img
         className='avatar'
-        src={winner.profile.avatar_url}
+        src={avatar}
         alt={`Avatar for ${winner.profile.login}`}
       />
       {subheader && <h4 className='center-text'>{subheader}</h4>}
