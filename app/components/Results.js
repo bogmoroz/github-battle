@@ -33,7 +33,7 @@ export default class Results extends React.Component {
   }
 
   render() {
-    const { winner, loser, error, message } = this.state;
+    const { winner, loser, error, loading } = this.state;
 
     if (loading === true) {
       return <p>LOADING</p>;
@@ -49,9 +49,26 @@ export default class Results extends React.Component {
           <h4 className='header-lg center-text'>
             {winner.score === loser.score ? 'Tie' : 'Winner'}
           </h4>
+          <img
+            className='avatar'
+            src={winner.profile.avatar_url}
+            alt={`Avatar for ${winner.profile.login}`}
+          />
+          <h2 className='center-text'>
+            <a className='link' href={winner.profile.html_url}>
+              {winner.profile.login}
+            </a>
+          </h2>
         </div>
         <div className='card bg-light'>
-          {winner.score === loser.score ? 'Tie' : 'Loser'}
+          <h4 className='header-lg center-text'>
+            {winner.score === loser.score ? 'Tie' : 'Loser'}
+          </h4>
+          <img
+            className='avatar'
+            src={loser.profile.avatar_url}
+            alt={`Avatar for ${loser.profile.login}`}
+          />
         </div>
       </div>
     );
