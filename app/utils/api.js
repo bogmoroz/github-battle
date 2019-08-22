@@ -36,7 +36,10 @@ function getRepos(username) {
 }
 
 function getStarCount(repos) {
-  repos.reduce((count, { stargazers_count }) => count + stargazers_count, 0);
+  return repos.reduce(
+    (count, { stargazers_count }) => count + stargazers_count,
+    0
+  );
 }
 
 function calculateScore(followers, repos) {
@@ -57,7 +60,7 @@ function sortPlayers(players) {
 }
 
 export function battle(players) {
-  Promise.all([getUserData(players[0]), getUserData(players[1])]).then(
+  return Promise.all([getUserData(players[0]), getUserData(players[1])]).then(
     results => sortPlayers(results)
   );
 }
