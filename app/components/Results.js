@@ -18,7 +18,7 @@ function ProfileList({ profile }) {
         <FaUser color='rgb(239, 115, 115)' size={22} />
         {profile.name}
       </li>
-      {winner.profile.location && (
+      {profile.location && (
         <li>
           <FaCompass color='rgb(239, 115, 115)' size={22} />
           {profile.location}
@@ -43,7 +43,7 @@ function ProfileList({ profile }) {
 }
 
 ProfileList.propTypes = {
-  profile: PropTypes.object.isRequired()
+  profile: PropTypes.object.isRequired
 };
 
 export default class Results extends React.Component {
@@ -97,17 +97,17 @@ export default class Results extends React.Component {
           href={winner.profile.html_url}
           name={winner.profile.login}
         >
-          <ProfileList profile={winner} />
+          <ProfileList profile={winner.profile} />
         </Card>
 
         <Card
-          header={winner.score === loser.score ? 'Tie' : 'Winner'}
+          header={winner.score === loser.score ? 'Tie' : 'Loser'}
           subheader={`Score: ${loser.score.toLocaleString()}`}
           avatar={loser.profile.avatar_url}
           href={loser.profile.html_url}
           name={loser.profile.login}
         >
-          <ProfileList profile={loser} />
+          <ProfileList profile={loser.profile} />
         </Card>
       </div>
     );
