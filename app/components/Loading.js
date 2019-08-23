@@ -22,7 +22,7 @@ export default class Loading extends React.Component {
   }
 
   componentDidMount() {
-    const { text, speed } = this.state;
+    const { text, speed } = this.props;
 
     this.interval = window.setInterval(() => {
       this.state.content === text + '...'
