@@ -1,7 +1,11 @@
 import React from 'react';
 import { ThemeConsumer } from '../contexts/theme';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaLightbulb } from 'react-icons/fa';
+
+const activeStyle = {
+  color: 'rgb(187, 46, 31)'
+};
 
 export default function Nav() {
   return (
@@ -10,14 +14,23 @@ export default function Nav() {
         <nav className='row space-between'>
           <ul className='row nav'>
             <li>
-              <Link to='/' className='nav-link'>
+              <NavLink
+                to='/'
+                exact
+                activeStyle={activeStyle}
+                className='nav-link'
+              >
                 Popular
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to='/battle' className='nav-link'>
+              <NavLink
+                to='/battle'
+                activeStyle={activeStyle}
+                className='nav-link'
+              >
                 Battle
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <button
