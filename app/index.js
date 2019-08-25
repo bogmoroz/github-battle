@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-/* import Popular from './components/Popular';
-import Battle from './components/Battle';
-import Results from './components/Results'; */
 import { ThemeProvider } from './contexts/theme';
 import Nav from './components/Nav';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
