@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeConsumer } from '../contexts/theme';
 import { Link } from 'react-router-dom';
+import { FaLightbulb } from 'react-icons/fa';
 
 export default function Nav() {
   return (
@@ -24,7 +25,11 @@ export default function Nav() {
             className='btn-clear'
             onClick={toggleTheme}
           >
-            {theme === 'light' ? 'turn off the light' : 'turn on the light'}
+            {theme === 'light' ? (
+              <FaLightbulb size={20} />
+            ) : (
+              <FaLightbulb size={20} color={'#e6e6e6'} />
+            )}
           </button>
         </nav>
       )}
